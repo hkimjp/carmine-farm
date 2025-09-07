@@ -1,38 +1,27 @@
 # hkimjp/carmine
 
-FIXME: my new library.
+A redis client that owes mainly `taoensso.carmine`.
 
 ## Usage
 
-FIXME: write usage documentation!
+start connection to redis server:
 
-Invoke a library API function from the command-line:
+    (redis-sever "redis://redis-server:port")
 
-    $ clojure -X carmine.carmine/foo :a 1 :b '"two"'
-    {:a 1, :b "two"} "Hello, World!"
+default value will be provided REDIS env var.
 
-Run the project's tests (they'll fail until you edit them):
+    REDIS = "redis://localhost:6379"
 
-    $ clojure -T:build test
+## Example
 
-Run the project's CI pipeline and build a JAR (this will fail until you edit the tests to pass):
-
-    $ clojure -T:build ci
-
-This will produce an updated `pom.xml` file with synchronized dependencies inside the `META-INF`
-directory inside `target/classes` and the JAR in `target`. You can update the version (and SCM tag)
-information in generated `pom.xml` by updating `build.clj`.
-
-Install it locally (requires the `ci` task be run first):
-
-    $ clojure -T:build install
-
-Deploy it to Clojars -- needs `CLOJARS_USERNAME` and `CLOJARS_PASSWORD` environment
-variables (requires the `ci` task be run first):
-
-    $ clojure -T:build deploy
-
-Your library will be deployed to net.clojars.carmine/carmine on clojars.org by default.
+    (require '[hkimjp.carmine :as c])
+    (c/redis-server)
+    (c/ping)
+    (c/set "x" 1)
+    (c/get "x")
+    (c/setex "now" 10 (java.util.Date.))
+    (c/get "now")
+    (c/get "now")
 
 ## License
 

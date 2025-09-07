@@ -7,12 +7,12 @@
 (t/set-min-level! :debug)
 
 (comment
+  (require '[hkimjp.carmine :as c])
   (c/redis-server)
   (c/ping)
   (c/set "x" 1)
   (c/get "x")
-  (c/set "now" (java.util.Date.))
+  (c/setex "now" 10 (java.util.Date.))
   (c/get "now")
-  (c/setex "y" 10 (jt/local-time))
-  (str (c/get "y"))
+  (c/get "now")
   :rcf)

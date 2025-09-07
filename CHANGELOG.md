@@ -1,5 +1,6 @@
 # 0.1.0
 
+* replaced def in def by `alter-var-root`
 * clojure -Tantq outdated
 
 | :file    | :name                         | :current | :latest  |
