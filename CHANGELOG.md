@@ -1,3 +1,8 @@
+# 0.2.0
+
+* create remote repository on github.com
+
+
 # 0.1.0
 
 * replaced def in def by `alter-var-root`
