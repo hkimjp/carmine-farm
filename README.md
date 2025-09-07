@@ -8,7 +8,7 @@ start connection to redis server:
 
     (redis-sever "redis://redis-server:port")
 
-default value will be provided REDIS env var.
+server uri can be provided as env var.
 
     REDIS = "redis://localhost:6379"
 
