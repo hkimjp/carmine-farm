@@ -1,5 +1,6 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure   {:mvn/version "1.12.2"}
+        environ/environ       {:mvn/version "1.2.0"}
         com.taoensso/carmine  {:mvn/version "3.4.1"}
         com.taoensso/telemere {:mvn/version "1.1.0"}
         clojure.java-time/clojure.java-time {:mvn/version "1.4.3"}}

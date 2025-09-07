@@ -1,55 +1,61 @@
 (ns hkimjp.carmine
   (:refer-clojure :exclude [set get keys])
   (:require
-   [clojure.string :as str]
-   ; [java-time.api :as jt]
+   [environ.core :refer [env]]
    [taoensso.carmine :as car]
    [taoensso.telemere :as t]))
 
-(defonce my-conn-pool (car/connection-pool {}))
-
-(def my-conn-spec {:uri (or (System/getenv "REDIS") "redis://localhost:6379")})
-
-(def my-wcar-opts {:pool my-conn-pool, :spec my-conn-spec})
-
 (defmacro wcar* [& body] `(car/wcar my-wcar-opts ~@body))
 
+(def my-conn-pool nil)
+(def my-conn-spec nil)
+(def my-wcar-opts nil)
+
+(defn redis-server
+  ([] (redis-server (or (env :redis) "redis://localhost:6379")))
+  ([uri]
+   (alter-var-root #'my-conn-pool (constantly (car/connection-pool {})))
+   (alter-var-root #'my-conn-spec (constantly {:uri uri}))
+   (alter-var-root #'my-wcar-opts
+                   (constantly {:pool my-conn-pool :spec my-conn-spec}))))
+
 (defn ping []
+  (t/log! :debug "ping")
   (wcar* (car/ping)))
 
 (defn set [key value]
+  (t/log! :debug (str "set " key " " value))
   (wcar* (car/set key value)))
 
 (defn setex [key expire value]
+  (t/log! :debug (str "setex " key " " expire " " value))
   (wcar* (car/setex key expire value)))
 
 (defn get [key]
+  (t/log! :debug (str "get " key))
   (wcar* (car/get key)))
 
 (defn keys [key]
+  (t/log! :debug (str "keys " key))
   (wcar* (car/keys key)))
 
 (defn ttl [key]
+  (t/log! :debug (str "ttl " key))
   (wcar* (car/ttl key)))
 
 (defn lpush [key element]
+  (t/log! :debug (str "lpush " key " " element))
   (wcar* (car/lpush key element)))
 
 (defn lrange
   ([key] (lrange key 0 -1))
   ([key start stop]
+   (t/log! :debug (str "lrange " key " " start " " stop))
    (wcar* (car/lrange key start stop))))
 
 (defn llen [key]
+  (t/log! :debug (str "llen " key))
   (wcar* (car/llen key)))
 
 ;-----------------------
 
-(defn ping? []
-  (try
-    (ping)
-    (catch Exception e
-      (println (.getMessage e))
-      nil)))
-
-; (ping?)
