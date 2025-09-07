@@ -1,6 +1,6 @@
 # hkimjp/carmine-farm
 
-A redis client that owes mainly `taoensso.carmine`.
+My learning place about using `taoensso.carmine`.
 
 ## Usage
 

@@ -1,7 +1,10 @@
+# 0.2.1
+
+* updated README.md.
+
 # 0.2.0
 
 * create remote repository on github.com
-
 
 # 0.1.0
 
