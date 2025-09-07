@@ -1,4 +1,4 @@
-# hkimjp/carmine
+# hkimjp/carmine-farm
 
 A redis client that owes mainly `taoensso.carmine`.
 
