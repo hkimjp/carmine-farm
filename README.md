@@ -14,14 +14,29 @@ default value will be provided REDIS env var.
 
 ## Example
 
-    (require '[hkimjp.carmine :as c])
-    (c/redis-server)
-    (c/ping)
-    (c/set "x" 1)
-    (c/get "x")
-    (c/setex "now" 10 (java.util.Date.))
-    (c/get "now")
-    (c/get "now")
+    > clj
+    user=> (require '[hkimjp.carmine :as c])
+    nil
+
+    user=> (c/redis-server)
+
+    user=> (c/ping)
+    "PONG"
+
+    user=> (c/set "x" 1)
+    "OK"
+
+    user=> (c/get "x")
+    "1"
+
+    user=> (c/setex "now" 10 (java.util.Date.))
+    "OK"
+
+    user=> (c/get "now")
+    #inst "2025-09-07T02:49:20.226-00:00"
+
+    user=> (c/get "now")
+    nil
 
 ## License
 
