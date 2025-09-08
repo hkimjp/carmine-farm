@@ -1,3 +1,7 @@
+# 0.2.3
+
+* added `exist? key`
+
 # 0.2.2
 
 * added `expire key ttl`
