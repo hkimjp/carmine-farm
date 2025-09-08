@@ -31,6 +31,18 @@
   (t/log! :debug (str "setex " key " " expire " " value))
   (wcar* (car/setex key expire value)))
 
+(defn expire [key value]
+  (t/log! :debug (str "expire " key " " value))
+  (wcar* (car/expire key value)))
+
+(defn incr [counter]
+  (t/log! :debug "counter")
+  (wcar* (car/incr counter)))
+
+(defn ttl [key]
+  (t/log! :debug (str "ttl " key))
+  (wcar* (car/ttl key)))
+
 (defn get [key]
   (t/log! :debug (str "get " key))
   (wcar* (car/get key)))
@@ -38,10 +50,6 @@
 (defn keys [key]
   (t/log! :debug (str "keys " key))
   (wcar* (car/keys key)))
-
-(defn ttl [key]
-  (t/log! :debug (str "ttl " key))
-  (wcar* (car/ttl key)))
 
 (defn lpush [key element]
   (t/log! :debug (str "lpush " key " " element))

@@ -1,3 +1,8 @@
+# 0.2.2
+
+* added `expire key ttl`
+* added `incr counter)`
+
 # 0.2.1
 
 * updated README.md.
