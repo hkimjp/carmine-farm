@@ -2,7 +2,16 @@
 
 My learning place about using `taoensso.carmine`.
 
+## Installation
+
+deps.edn:
+
+```
+io.github.hkimjp/carmine-farm {:git/tag "0.2.2" :git/sha "69e2add"}
+```
+
 ## Usage
+
 
 start connection to redis server:
 
