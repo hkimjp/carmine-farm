@@ -7,10 +7,10 @@
 
 (comment
   (c/redis-server)
-  (c/ping)
-  (c/set "x" 1)
+  (c/set "x" 100)
   (c/get "x")
-  (c/setex "now" 10 (java.util.Date.))
-  (c/get "now")
-  (c/get "now")
+  (c/incr "x")
+  (c/expire "x" 10)
+  (c/ttl "x")
+
   :rcf)
