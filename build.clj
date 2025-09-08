@@ -4,9 +4,9 @@
             [deps-deploy.deps-deploy :as dd]))
 
 (def lib 'net.clojars.carmine/carmine)
-(def version "0.2.1")
+(def version "0.2.2")
 #_ ; alternatively, use MAJOR.MINOR.COMMITS:
-(def version "0.2.1")
+(def version "0.2.2")
 (def class-dir "target/classes")
 
 (defn test "Run all the tests." [opts]
