@@ -47,6 +47,9 @@
   (t/log! :debug (str "get " key))
   (wcar* (car/get key)))
 
+(defn exist? [key]
+  (some? (get key)))
+
 (defn keys [key]
   (t/log! :debug (str "keys " key))
   (wcar* (car/keys key)))
