@@ -1,3 +1,7 @@
+# 0.2.5.1-SNAPSHOT
+
+* improved t/log!
+
 # 0.2.5 (2025-09-17)
 
 * renamed `redis-server` to `create-conn`
