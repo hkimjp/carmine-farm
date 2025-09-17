@@ -1,3 +1,13 @@
+# 0.2.5 (2025-09-17)
+
+* renamed `redis-server` to `create-conn`
+* (def redis-server create-conn) for not-BREAKING
+* close-conn - almost dummy. no effect.
+
+# 0.2.3
+
+* added `exist? key`
+
 # 0.2.2
 
 * added `expire key ttl`
