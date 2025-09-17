@@ -6,6 +6,8 @@ help:
 nrepl:
   clj -M:dev:nrepl
 
+dev: nrepl
+
 update:
   clojure -Tantq outdated :upgrade true :force true
 
