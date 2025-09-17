@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.clojars.carmine</groupId>
   <artifactId>carmine</artifactId>
-  <version>0.2.5.1</version>
+  <version>0.2.6</version>
   <name>carmine/carmine</name>
   <description>FIXME: my new library.</description>
   <url>https://github.com/carmine/carmine</url>
@@ -22,7 +22,7 @@
     <url>https://github.com/carmine/carmine</url>
     <connection>scm:git:git://github.com/carmine/carmine.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/carmine/carmine.git</developerConnection>
-    <tag>v0.2.5.1</tag>
+    <tag>v0.2.6</tag>
   </scm>
   <dependencies>
     <dependency>
