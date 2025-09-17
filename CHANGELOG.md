@@ -1,4 +1,4 @@
-# 0.2.4
+# 0.2.5 (2025-09-17)
 
 * renamed `redis-server` to `create-conn`
 * (def redis-server create-conn) for not-BREAKING
