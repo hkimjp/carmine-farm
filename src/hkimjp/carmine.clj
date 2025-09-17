@@ -11,13 +11,27 @@
 (def my-conn-spec nil)
 (def my-wcar-opts nil)
 
-(defn redis-server
-  ([] (redis-server (or (env :redis) "redis://localhost:6379")))
+(defn create-conn
+  ([] (create-conn (or (env :redis) "redis://localhost:6379")))
   ([uri]
-   (alter-var-root #'my-conn-pool (constantly (car/connection-pool {})))
-   (alter-var-root #'my-conn-spec (constantly {:uri uri}))
-   (alter-var-root #'my-wcar-opts
-                   (constantly {:pool my-conn-pool :spec my-conn-spec}))))
+   (try
+     (alter-var-root #'my-conn-pool (constantly (car/connection-pool {})))
+     (alter-var-root #'my-conn-spec (constantly {:uri uri}))
+     (alter-var-root #'my-wcar-opts
+                     (constantly {:pool my-conn-pool :spec my-conn-spec}))
+     true
+     (catch Exception e
+       (t/log! {:level :fatal :msg e})
+       (System/exit 0))))) ; throw exeption?
+
+; for not-BREAKING
+(def redis-server create-conn)
+
+; FIXME: no effect.
+(defn close-conn []
+  (alter-var-root #'my-conn-pool (constantly nil))
+  (alter-var-root #'my-conn-spec (constantly nil))
+  (alter-var-root #'my-wcar-opts (constantly nil)))
 
 (defn ping []
   (t/log! :debug "ping")

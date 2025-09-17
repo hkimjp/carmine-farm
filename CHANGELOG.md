@@ -1,3 +1,9 @@
+# 0.2.4
+
+* renamed `redis-server` to `create-conn`
+* (def redis-server create-conn) for not-BREAKING
+* close-conn - almost dummy. no effect.
+
 # 0.2.3
 
 * added `exist? key`

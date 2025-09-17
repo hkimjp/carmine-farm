@@ -6,11 +6,12 @@
 (t/set-min-level! :debug)
 
 (comment
+  (c/create-conn)
   (c/redis-server)
   (c/set "x" 100)
   (c/get "x")
   (c/incr "x")
   (c/expire "x" 10)
   (c/ttl "x")
-
+  (c/close-conn)
   :rcf)
