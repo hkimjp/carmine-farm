@@ -20,7 +20,6 @@
      (alter-var-root #'my-conn-spec (constantly {:uri uri}))
      (alter-var-root #'my-wcar-opts
                      (constantly {:pool my-conn-pool :spec my-conn-spec}))
-     true
      (catch Exception e
        (t/log! {:level :fatal :msg e})
        (System/exit 0))))) ; throw exeption?
