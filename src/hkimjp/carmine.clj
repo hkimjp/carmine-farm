@@ -14,6 +14,7 @@
 (defn create-conn
   ([] (create-conn (or (env :redis) "redis://localhost:6379")))
   ([uri]
+   (t/log! {:level :info :id "create-conn" :data {:uri uri}})
    (try
      (alter-var-root #'my-conn-pool (constantly (car/connection-pool {})))
      (alter-var-root #'my-conn-spec (constantly {:uri uri}))
@@ -24,11 +25,12 @@
        (t/log! {:level :fatal :msg e})
        (System/exit 0))))) ; throw exeption?
 
-; for not-BREAKING
+; alias for not-BREAKING
 (def redis-server create-conn)
 
-; FIXME: no effect.
+; FIXME: really closed?
 (defn close-conn []
+  (t/log! {:level :info :id "close-conn"})
   (alter-var-root #'my-conn-pool (constantly nil))
   (alter-var-root #'my-conn-spec (constantly nil))
   (alter-var-root #'my-wcar-opts (constantly nil)))
