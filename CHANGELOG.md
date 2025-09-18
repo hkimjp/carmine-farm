@@ -1,3 +1,11 @@
+# 0.2.8
+
+* no change. push again.
+
+# 0.2.7
+
+* konpy2 can not find c/create-conn.
+
 # 0.2.6 (2025-09-17)
 
 * merge again

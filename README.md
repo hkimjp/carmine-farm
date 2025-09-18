@@ -7,7 +7,7 @@ My learning place about using `taoensso.carmine`.
 deps.edn:
 
 ```
-io.github.hkimjp/carmine-farm {:git/tag "0.2.3" :git/sha "e4668b8"}
+io.github.hkimjp/carmine-farm {:git/tag "0.2.6" :git/sha "3b62f6b"}
 ```
 
 ## Usage
@@ -15,9 +15,9 @@ io.github.hkimjp/carmine-farm {:git/tag "0.2.3" :git/sha "e4668b8"}
 
 start connection to redis server:
 
-    (redis-sever "redis://redis-server:port")
+    (create-conn "redis://redis-server:port")
 
-server uri can be provided as env var.
+server uri can be provided as an env-var.
 
     REDIS = "redis://localhost:6379"
 
@@ -27,7 +27,7 @@ server uri can be provided as env var.
     user=> (require '[hkimjp.carmine :as c])
     nil
 
-    user=> (c/redis-server)
+    user=> (c/create-conn)
 
     user=> (c/ping)
     "PONG"
@@ -46,6 +46,9 @@ server uri can be provided as env var.
 
     user=> (c/get "now")
     nil
+
+    user=> (c/close-conn) ; no effect 0.2.6.
+
 
 ## License
 

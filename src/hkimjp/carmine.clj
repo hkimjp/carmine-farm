@@ -6,18 +6,31 @@
    [taoensso.telemere :as t]))
 
 (defmacro wcar* [& body] `(car/wcar my-wcar-opts ~@body))
-
 (def my-conn-pool nil)
 (def my-conn-spec nil)
 (def my-wcar-opts nil)
 
-(defn redis-server
-  ([] (redis-server (or (env :redis) "redis://localhost:6379")))
+(defn create-conn
+  ([] (create-conn (or (env :redis) "redis://localhost:6379")))
   ([uri]
-   (alter-var-root #'my-conn-pool (constantly (car/connection-pool {})))
-   (alter-var-root #'my-conn-spec (constantly {:uri uri}))
-   (alter-var-root #'my-wcar-opts
-                   (constantly {:pool my-conn-pool :spec my-conn-spec}))))
+   (t/log! {:level :info :id "create-conn" :data {:uri uri}})
+   (try
+     (alter-var-root #'my-conn-pool (constantly (car/connection-pool {})))
+     (alter-var-root #'my-conn-spec (constantly {:uri uri}))
+     (alter-var-root #'my-wcar-opts
+                     (constantly {:pool my-conn-pool :spec my-conn-spec}))
+     (catch Exception e
+       (t/log! {:level :fatal :msg e})
+       (System/exit 0)))))
+
+(def redis-server create-conn)
+
+; FIXME: really closed?
+(defn close-conn []
+  (t/log! {:level :info :id "close-conn"})
+  (alter-var-root #'my-conn-pool (constantly nil))
+  (alter-var-root #'my-conn-spec (constantly nil))
+  (alter-var-root #'my-wcar-opts (constantly nil)))
 
 (defn ping []
   (t/log! :debug "ping")
@@ -67,5 +80,3 @@
 (defn llen [key]
   (t/log! :debug (str "llen " key))
   (wcar* (car/llen key)))
-
-;-----------------------
