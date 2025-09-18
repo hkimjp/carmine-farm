@@ -22,9 +22,8 @@
                      (constantly {:pool my-conn-pool :spec my-conn-spec}))
      (catch Exception e
        (t/log! {:level :fatal :msg e})
-       (System/exit 0))))) ; throw exeption?
+       (System/exit 0)))))
 
-; alias for not-BREAKING
 (def redis-server create-conn)
 
 ; FIXME: really closed?
@@ -82,5 +81,3 @@
 (defn llen [key]
   (t/log! :debug (str "llen " key))
   (wcar* (car/llen key)))
-
-;-----------------------
