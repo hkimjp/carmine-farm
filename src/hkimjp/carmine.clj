@@ -6,7 +6,6 @@
    [taoensso.telemere :as t]))
 
 (defmacro wcar* [& body] `(car/wcar my-wcar-opts ~@body))
-
 (def my-conn-pool nil)
 (def my-conn-spec nil)
 (def my-wcar-opts nil)

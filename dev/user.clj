@@ -8,7 +8,7 @@
 
 (comment
   (c/create-conn)
-  (c/redis-server)
+  ; (c/redis-server)
   (c/ping)
   (c/set "x" 100)
   (c/get "x")
