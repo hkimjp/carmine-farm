@@ -11,6 +11,10 @@
 * (def redis-server create-conn) for not-BREAKING
 * close-conn - almost dummy. no effect.
 
+# 0.2.4
+
+* check the connection at start up
+
 # 0.2.3
 
 * added `exist? key`

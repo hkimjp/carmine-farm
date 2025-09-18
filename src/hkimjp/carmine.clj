@@ -11,8 +11,8 @@
 (def my-conn-spec nil)
 (def my-wcar-opts nil)
 
-(defn redis-server
-  ([] (redis-server (or (env :redis) "redis://localhost:6379")))
+(defn create-conn
+  ([] (create-conn (or (env :redis) "redis://localhost:6379")))
   ([uri]
    (t/log! {:level :info :id "create-conn" :data {:uri uri}})
    (try
