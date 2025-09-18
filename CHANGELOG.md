@@ -1,6 +1,15 @@
-# 0.2.4
+# 0.2.7-SNAPSHOT
 
-* check the connection at start up
+
+# 0.2.6 (2025-09-17)
+
+* merge again
+
+# 0.2.5 (2025-09-17)
+
+* renamed `redis-server` to `create-conn`
+* (def redis-server create-conn) for not-BREAKING
+* close-conn - almost dummy. no effect.
 
 # 0.2.3
 

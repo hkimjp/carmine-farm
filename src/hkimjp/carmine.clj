@@ -11,19 +11,28 @@
 (def my-conn-spec nil)
 (def my-wcar-opts nil)
 
-(declare ping)
-
 (defn redis-server
   ([] (redis-server (or (env :redis) "redis://localhost:6379")))
   ([uri]
-   (t/log! :info (str "redis-server " uri))
-   (alter-var-root #'my-conn-pool (constantly (car/connection-pool {})))
-   (alter-var-root #'my-conn-spec (constantly {:uri uri}))
-   (alter-var-root #'my-wcar-opts
-                   (constantly {:pool my-conn-pool :spec my-conn-spec}))
-   (if (= (ping) "PONG")
-     (t/log! :info (str "connect to " redis-server))
-     (throw (Exception. "can not connect to redis server")))))
+   (t/log! {:level :info :id "create-conn" :data {:uri uri}})
+   (try
+     (alter-var-root #'my-conn-pool (constantly (car/connection-pool {})))
+     (alter-var-root #'my-conn-spec (constantly {:uri uri}))
+     (alter-var-root #'my-wcar-opts
+                     (constantly {:pool my-conn-pool :spec my-conn-spec}))
+     (catch Exception e
+       (t/log! {:level :fatal :msg e})
+       (System/exit 0))))) ; throw exeption?
+
+; alias for not-BREAKING
+(def redis-server create-conn)
+
+; FIXME: really closed?
+(defn close-conn []
+  (t/log! {:level :info :id "close-conn"})
+  (alter-var-root #'my-conn-pool (constantly nil))
+  (alter-var-root #'my-conn-spec (constantly nil))
+  (alter-var-root #'my-wcar-opts (constantly nil)))
 
 (defn ping []
   (t/log! :debug "ping")
@@ -75,4 +84,3 @@
   (wcar* (car/llen key)))
 
 ;-----------------------
-

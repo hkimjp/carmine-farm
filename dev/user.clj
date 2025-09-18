@@ -7,6 +7,7 @@
 (c/redis-server)
 
 (comment
+  (c/create-conn)
   (c/redis-server)
   (c/ping)
   (c/set "x" 100)
@@ -14,5 +15,5 @@
   (c/incr "x")
   (c/expire "x" 10)
   (c/ttl "x")
-
+  (c/close-conn)
   :rcf)
