@@ -1,3 +1,7 @@
+# 0.2.9
+
+* throw exception and exit if ping to uri fails.
+
 # 0.2.8
 
 * no change. push again.

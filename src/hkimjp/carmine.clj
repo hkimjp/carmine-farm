@@ -13,15 +13,18 @@
 (defn create-conn
   ([] (create-conn (or (env :redis) "redis://localhost:6379")))
   ([uri]
-   (t/log! {:level :info :id "create-conn" :data {:uri uri}})
+   (t/log! {:level :info :id "create-conn" :msg uri})
    (try
      (alter-var-root #'my-conn-pool (constantly (car/connection-pool {})))
      (alter-var-root #'my-conn-spec (constantly {:uri uri}))
      (alter-var-root #'my-wcar-opts
                      (constantly {:pool my-conn-pool :spec my-conn-spec}))
+     (wcar* (car/ping))
      (catch Exception e
-       (t/log! {:level :fatal :msg e})
-       (System/exit 0)))))
+       (let [msg (format "%s: %s" (.getMessage e) uri)]
+         (t/log! {:level :fatal :msg msg})
+         (throw (Exception. msg))
+         (System/exit 0))))))
 
 (def redis-server create-conn)
 
