@@ -1,3 +1,8 @@
+# 0.3.0-SNAPSHOT
+
+* org.clojure/clojure 1.12.3
+
+
 # 0.2.9
 
 * throw exception and exit if ping to uri fails.
