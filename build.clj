@@ -4,7 +4,7 @@
             [deps-deploy.deps-deploy :as dd]))
 
 (def lib 'io.github.hkimjp/carmine-farm)
-(def version "0.2.9")
+(def version "0.3.0")
 (def class-dir "target/classes")
 
 (defn test "Run all the tests." [opts]
