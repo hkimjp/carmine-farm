@@ -1,3 +1,19 @@
+# Unreleased
+
+* test
+* trove debug level?
+
+# 0.3.0 (2025-11-07)
+
+* taoensso/trove - my knowledge is not enough. debug level?
+* com.taoensso/carmine updated
+* org.clojure/clojure 1.12.3
+
+| :file    | :name                         | :current | :latest  |
+|----------|-------------------------------|----------|----------|
+| deps.edn | com.taoensso/carmine          | 3.4.1    | 3.5.0    |
+|          | io.github.clojure/tools.build | v0.10.10 | v0.10.11 |
+
 # 0.2.9
 
 * throw exception and exit if ping to uri fails.
