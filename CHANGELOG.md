@@ -1,7 +1,18 @@
+# Unreleased
+
+* test
+* trove debug level?
+
 # 0.3.0-SNAPSHOT
 
-* org.clojure/clojure 1.12.3
+* taoensso/trove - my knowledge is not enough. debug level?
 
+| :file    | :name                         | :current | :latest  |
+|----------|-------------------------------|----------|----------|
+| deps.edn | com.taoensso/carmine          | 3.4.1    | 3.5.0    |
+|          | io.github.clojure/tools.build | v0.10.10 | v0.10.11 |
+
+* org.clojure/clojure 1.12.3
 
 # 0.2.9
 

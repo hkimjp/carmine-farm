@@ -3,6 +3,8 @@
   (:require
    [environ.core :refer [env]]
    [taoensso.carmine :as car]
+   ; [taoensso.trove.telemere]
+   ; [taoensso.trove :as t]
    [taoensso.telemere :as t]))
 
 (defmacro wcar* [& body] `(car/wcar my-wcar-opts ~@body))
@@ -21,7 +23,7 @@
                      (constantly {:pool my-conn-pool :spec my-conn-spec}))
      (wcar* (car/ping))
      (catch Exception e
-       (let [msg (format "%s: %s" (.getMessage e) uri)]
+       (let [msg (format "%s: %s" uri (.getMessage e))]
          (t/log! {:level :fatal :msg msg})
          (throw (Exception. msg))
          (System/exit 0))))))
@@ -36,50 +38,50 @@
   (alter-var-root #'my-wcar-opts (constantly nil)))
 
 (defn ping []
-  (t/log! :debug "ping")
+  (t/log! {:level :debug :msg "ping"})
   (wcar* (car/ping)))
 
 (defn set [key value]
-  (t/log! :debug (str "set " key " " value))
+  (t/log! {:leve :debug :msg (str "set " key " " value)})
   (wcar* (car/set key value)))
 
 (defn setex [key expire value]
-  (t/log! :debug (str "setex " key " " expire " " value))
+  (t/log! {:level :debug :msg (str "setex " key " " expire " " value)})
   (wcar* (car/setex key expire value)))
 
 (defn expire [key value]
-  (t/log! :debug (str "expire " key " " value))
+  (t/log! {:level :debug :msg (str "expire " key " " value)})
   (wcar* (car/expire key value)))
 
 (defn incr [counter]
-  (t/log! :debug "counter")
+  (t/log! {:level :debug :msg "counter"})
   (wcar* (car/incr counter)))
 
 (defn ttl [key]
-  (t/log! :debug (str "ttl " key))
+  (t/log! {:level :debug :msg (str "ttl " key)})
   (wcar* (car/ttl key)))
 
 (defn get [key]
-  (t/log! :debug (str "get " key))
+  (t/log! {:level :debug :msg (str "get " key)})
   (wcar* (car/get key)))
 
 (defn exist? [key]
   (some? (get key)))
 
 (defn keys [key]
-  (t/log! :debug (str "keys " key))
+  (t/log! {:level :debug :msg (str "keys " key)})
   (wcar* (car/keys key)))
 
 (defn lpush [key element]
-  (t/log! :debug (str "lpush " key " " element))
+  (t/log! {:level :debug :msg (str "lpush " key " " element)})
   (wcar* (car/lpush key element)))
 
 (defn lrange
   ([key] (lrange key 0 -1))
   ([key start stop]
-   (t/log! :debug (str "lrange " key " " start " " stop))
+   (t/log! {:level :debug :msg (str "lrange " key " " start " " stop)})
    (wcar* (car/lrange key start stop))))
 
 (defn llen [key]
-  (t/log! :debug (str "llen " key))
+  (t/log! {:level :debug :msg (str "llen " key)})
   (wcar* (car/llen key)))
