@@ -3,9 +3,12 @@
 * test
 * trove debug level?
 
+
 # 0.4.0 (2026-04-05)
 
 EXISTS, SCAN
+
+io.github.hkimjp/carmine-farm {:git/tag "0.4.0" :git/sha "8da271b"}
 
 * antq-upgrade
 
@@ -24,6 +27,8 @@ EXISTS, SCAN
 
 
 # 0.3.0 (2025-11-07)
+
+io.github.hkimjp/carmine-farm {:git/tag "0.3.0" :git/sha "8e7b1f1"}
 
 * taoensso/trove - my knowledge is not enough. debug level?
 * com.taoensso/carmine updated
