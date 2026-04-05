@@ -3,8 +3,6 @@
   (:require
    [environ.core :refer [env]]
    [taoensso.carmine :as car]
-   ; [taoensso.trove.telemere]
-   ; [taoensso.trove :as t]
    [taoensso.telemere :as t]))
 
 (defmacro wcar* [& body] `(car/wcar my-wcar-opts ~@body))
@@ -68,6 +66,10 @@
 (defn exist? [key]
   (some? (get key)))
 
+(defn exists [key]
+  (t/log! {:level :debug :msg (str "exists " key)})
+  (wcar* (car/exists key)))
+
 (defn keys [key]
   (t/log! {:level :debug :msg (str "keys " key)})
   (wcar* (car/keys key)))
@@ -85,3 +87,21 @@
 (defn llen [key]
   (t/log! {:level :debug :msg (str "llen " key)})
   (wcar* (car/llen key)))
+
+(defn scan
+  "wrap redis `scan 0 MATCH pattern`"
+  [pattern]
+  (t/log! {:level :debug :id "scan" :msg pattern})
+  (wcar* (car/scan 0 "MATCH" pattern)))
+
+(defn scan0
+  "search database 0 only"
+  [pattern]
+  (-> (scan pattern) second))
+
+; how to? this does not work. 2026-04-05
+; (defn scan-keys [pattern]
+;   (t/log! {:level :debug :id "scan-keys" :msg pattern})
+;   (wcar* (car/scan-keys my-wcar-opts pattern)))
+
+
