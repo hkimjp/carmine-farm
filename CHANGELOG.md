@@ -3,7 +3,7 @@
 * test
 * trove debug level?
 
-# 0.4.0-SNAPSHOT
+# 0.4.0 (2026-04-05)
 
 EXISTS, SCAN
 
