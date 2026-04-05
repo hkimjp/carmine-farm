@@ -3,6 +3,26 @@
 * test
 * trove debug level?
 
+# 0.4.0 (2026-04-05)
+
+EXISTS, SCAN
+
+* antq-upgrade
+
+| :file    | :name                         | :current | :latest  |
+|----------|-------------------------------|----------|----------|
+| deps.edn | com.taoensso/telemere         | 1.1.0    | 1.2.1    |
+|          | io.github.clojure/tools.build | v0.10.11 | v0.10.13 |
+|          | org.clojure/clojure           | 1.12.3   | 1.12.4   |
+|          | org.clojure/test.check        | 1.1.1    | 1.1.3    |
+| pom.xml  | org.clojure/clojure           | 1.12.3   | 1.12.4   |
+
+* added `deps.edn` alias `:dev`
+* added exists
+* added scan
+* added scan0 - may be a replacement of `(keys pattern)`
+
+
 # 0.3.0 (2025-11-07)
 
 * taoensso/trove - my knowledge is not enough. debug level?
