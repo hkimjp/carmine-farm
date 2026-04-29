@@ -6,7 +6,14 @@ Carmine wrapper for my own use.
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
 
+## 0.4.2 (2026-04-29)
+
+- before 0.4.0, scan0 retuned its second. 0.4.1 not. so resumed to the old way.
+
+
 ## 0.4.1 (2026-04-29)
+
+io.github.hkimjp/carmine-farm {:git/tag "0.4.1" :git/sha "c990561"}
 
 - antq-upgrade
 
