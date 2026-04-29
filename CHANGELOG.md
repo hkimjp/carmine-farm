@@ -6,7 +6,7 @@ Carmine wrapper for my own use.
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
 
-## 0.4.1-SNAPSHOT
+## 0.4.1 (2026-04-29)
 
 - antq-upgrade
 
