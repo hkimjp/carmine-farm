@@ -8,8 +8,9 @@ Carmine wrapper for my own use.
 
 ## 0.4.2 (2026-04-29)
 
-- before 0.4.0, scan0 retuned its second. 0.4.1 not. so resumed to the old way.
+io.github.hkimjp/carmine-farm {:git/tag "0.4.2" :git/sha "150d4e2"}
 
+- before 0.4.0, scan0 retuned its second. 0.4.1 not. so resumed to the old way.
 
 ## 0.4.1 (2026-04-29)
 
