@@ -1,12 +1,24 @@
-# Unreleased
+# hkimjp/carmine-farm
 
-* test
-* trove debug level?
+Carmine wrapper for my own use.
+
+## Unreleased
+
+* (scan-keys conn-opt pattern) - what is the `conn-opt`?
+
+## 0.4.1-SNAPSHOT
+
+- antq-upgrade
+
+| :file    | :name               | :current | :latest |
+|----------|---------------------|----------|---------|
+| deps.edn | slipset/deps-deploy | 0.2.2    | 0.2.3   |
+
+- improve scan
+- remain scan0 for keeping backward compatibility
 
 
-# 0.4.0 (2026-04-05)
-
-EXISTS, SCAN
+## 0.4.0 (2026-04-05)
 
 io.github.hkimjp/carmine-farm {:git/tag "0.4.0" :git/sha "8da271b"}
 
@@ -26,7 +38,7 @@ io.github.hkimjp/carmine-farm {:git/tag "0.4.0" :git/sha "8da271b"}
 * added scan0 - may be a replacement of `(keys pattern)`
 
 
-# 0.3.0 (2025-11-07)
+## 0.3.0 (2025-11-07)
 
 io.github.hkimjp/carmine-farm {:git/tag "0.3.0" :git/sha "8e7b1f1"}
 
@@ -39,50 +51,50 @@ io.github.hkimjp/carmine-farm {:git/tag "0.3.0" :git/sha "8e7b1f1"}
 | deps.edn | com.taoensso/carmine          | 3.4.1    | 3.5.0    |
 |          | io.github.clojure/tools.build | v0.10.10 | v0.10.11 |
 
-# 0.2.9
+## 0.2.9
 
 * throw exception and exit if ping to uri fails.
 
-# 0.2.8
+## 0.2.8
 
 * no change. push again.
 
-# 0.2.7
+## 0.2.7
 
 * konpy2 can not find c/create-conn.
 
-# 0.2.6 (2025-09-17)
+## 0.2.6 (2025-09-17)
 
 * merge again
 
-# 0.2.5 (2025-09-17)
+## 0.2.5 (2025-09-17)
 
 * renamed `redis-server` to `create-conn`
 * (def redis-server create-conn) for not-BREAKING
 * close-conn - almost dummy. no effect.
 
-# 0.2.4
+## 0.2.4
 
 * check the connection at start up
 
-# 0.2.3
+## 0.2.3
 
 * added `exist? key`
 
-# 0.2.2
+## 0.2.2
 
 * added `expire key ttl`
 * added `incr counter)`
 
-# 0.2.1
+## 0.2.1
 
 * updated README.md.
 
-# 0.2.0
+## 0.2.0
 
 * create remote repository on github.com
 
-# 0.1.0
+## 0.1.0
 
 * replaced def in def by `alter-var-root`
 * clojure -Tantq outdated

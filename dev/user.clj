@@ -13,8 +13,8 @@
     (c/set (str "x" n) n))
 
   (c/keys "x*")
-  (c/scan "x*")
   (c/scan0 "x*")
+  (c/scan 0 "x*" 100)
 
   (c/get "x8")
 
