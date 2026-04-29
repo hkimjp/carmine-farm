@@ -28,7 +28,7 @@
 
 (def redis-server create-conn)
 
-; FIXME: really closed?
+; FIXME: properly closed by this?
 (defn close-conn []
   (t/log! {:level :info :id "close-conn"})
   (alter-var-root #'my-conn-pool (constantly nil))
@@ -89,19 +89,27 @@
   (wcar* (car/llen key)))
 
 (defn scan
-  "wrap redis `scan 0 MATCH pattern`"
-  [pattern]
-  (t/log! {:level :debug :id "scan" :msg pattern})
-  (wcar* (car/scan 0 "MATCH" pattern)))
+  [cursor pattern count]
+  (t/log! {:level :debug :id "scan"
+           :data {:cursor cursor :pattern pattern :count count}})
+  (wcar* (car/scan cursor "MATCH" pattern "COUNT" count)))
 
+; remain former compatibility only
 (defn scan0
-  "search database 0 only"
   [pattern]
-  (-> (scan pattern) second))
+  (scan 0 pattern 100))
 
-; how to? this does not work. 2026-04-05
-; (defn scan-keys [pattern]
-;   (t/log! {:level :debug :id "scan-keys" :msg pattern})
-;   (wcar* (car/scan-keys my-wcar-opts pattern)))
+(comment
+  (create-conn)
+  my-conn-pool
 
+  (dotimes [n 10]
+    (set (str "x" n) n))
 
+  (wcar* (car/scan 0 "MATCH" "x*" "COUNT" 100))
+  (keys "x*")
+  (scan 0 "x*" 100)
+  (scan0 "x*")
+
+  (close-conn)
+  :rcf)
