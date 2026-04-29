@@ -97,7 +97,8 @@
 ; remain former compatibility only
 (defn scan0
   [pattern]
-  (scan 0 pattern 100))
+  (-> (scan 0 pattern 100)
+      second))
 
 (comment
   (create-conn)
