@@ -89,28 +89,17 @@
   (wcar* (car/llen key)))
 
 (defn scan
-  [cursor pattern count]
-  (t/log! {:level :debug :id "scan"
-           :data {:cursor cursor :pattern pattern :count count}})
-  (wcar* (car/scan cursor "MATCH" pattern "COUNT" count)))
+  ([cursor pattern]
+   (wcar* (car/scan cursor "MATCH" pattern)))
+  ([cursor pattern count]
+   (wcar* (car/scan cursor "MATCH" pattern "COUNT" count))))
 
-; remain former compatibility only
-(defn scan0
-  [pattern]
-  (-> (scan 0 pattern 100)
-      second))
-
-(comment
-  (create-conn)
-  my-conn-pool
-
-  (dotimes [n 10]
-    (set (str "x" n) n))
-
-  (wcar* (car/scan 0 "MATCH" "x*" "COUNT" 100))
-  (keys "x*")
-  (scan 0 "x*" 100)
-  (scan0 "x*")
-
-  (close-conn)
-  :rcf)
+; remain back compatibility
+(defn scan0 [pattern]
+  (loop [cursor 0 result []]
+    (let [[c r] (scan cursor pattern)
+          n (parse-long c)
+          result (concat result r)]
+      (if (zero? n)
+        result
+        (recur n result)))))
