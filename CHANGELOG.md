@@ -8,6 +8,8 @@ Carmine wrapper for my own use.
 
 ## 0.4.3 (2026-05-02)
 
+io.github.hkimjp/carmine-farm {:git/tag "0.4.3" :git/sha "bfab1a3"}
+
 - bugfixed scan0 - understood how scan works.
 
 ## 0.4.2 (2026-04-29)
