@@ -94,7 +94,7 @@
   ([cursor pattern count]
    (wcar* (car/scan cursor "MATCH" pattern "COUNT" count))))
 
-; remain back compatibility
+; remains for backward compatibility
 (defn scan0 [pattern]
   (loop [cursor 0 result []]
     (let [[c r] (scan cursor pattern)
