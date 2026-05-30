@@ -5,10 +5,10 @@ Carmine wrapper for my own use.
 ## Unreleased
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
-* del
-* scan-all
+* scan-all - now `scan0` is the equivalence
 
-## 0.5.0-SNAPSHOT (2026-05-30)
+
+## 0.5.0 (2026-05-30)
 
 - added (c/del key)
 - updated libraries
