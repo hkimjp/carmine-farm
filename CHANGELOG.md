@@ -5,6 +5,8 @@ Carmine wrapper for my own use.
 ## Unreleased
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
+* del
+* scan-all
 
 ## 0.4.3 (2026-05-02)
 

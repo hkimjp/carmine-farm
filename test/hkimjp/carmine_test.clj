@@ -1,4 +1,4 @@
-(ns carmine.carmine-test
+(ns hkimjp.carmine-test
   (:require [clojure.test :refer [deftest testing is]]
             [hkimjp.carmine :as [c]]))
 
