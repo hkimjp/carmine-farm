@@ -8,6 +8,17 @@ Carmine wrapper for my own use.
 * del
 * scan-all
 
+## 0.5.0-SNAPSHOT
+
+- updated libraries
+
+| :file    | :name                         | :current | :latest  |
+|----------|-------------------------------|----------|----------|
+| deps.edn | io.github.clojure/tools.build | v0.10.13 | v0.10.14 |
+|          | org.clojure/clojure           | 1.12.4   | 1.12.5   |
+|          | slipset/deps-deploy           | 0.2.3    | 0.2.4    |
+| pom.xml  | org.clojure/clojure           | 1.12.4   | 1.12.5   |
+
 ## 0.4.3 (2026-05-02)
 
 io.github.hkimjp/carmine-farm {:git/tag "0.4.3" :git/sha "bfab1a3"}
