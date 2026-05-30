@@ -7,7 +7,7 @@ My learning place about using `taoensso.carmine`.
 deps.edn:
 
 ```
-io.github.hkimjp/carmine-farm {:git/tag "0.4.3" :git/sha "bfab1a3"}
+io.github.hkimjp/carmine-farm {:git/tag "0.5.0" :git/sha "f786a42"}
 ```
 
 ## Usage
