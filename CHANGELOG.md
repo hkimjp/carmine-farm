@@ -8,8 +8,9 @@ Carmine wrapper for my own use.
 * del
 * scan-all
 
-## 0.5.0-SNAPSHOT
+## 0.5.0-SNAPSHOT (2026-05-30)
 
+- added (c/del key)
 - updated libraries
 
 | :file    | :name                         | :current | :latest  |
