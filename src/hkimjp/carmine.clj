@@ -43,6 +43,10 @@
   (t/log! {:leve :debug :msg (str "set " key " " value)})
   (wcar* (car/set key value)))
 
+(defn del [key]
+  (t/log! {:level :debug :msg (str "del " key)})
+  (wcar* (car/del key)))
+
 (defn setex [key expire value]
   (t/log! {:level :debug :msg (str "setex " key " " expire " " value)})
   (wcar* (car/setex key expire value)))
@@ -95,6 +99,7 @@
    (wcar* (car/scan cursor "MATCH" pattern "COUNT" count))))
 
 ; remains for backward compatibility
+; rename to `scan-all`?
 (defn scan0 [pattern]
   (loop [cursor 0 result []]
     (let [[c r] (scan cursor pattern)
