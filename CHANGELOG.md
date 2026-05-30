@@ -5,6 +5,20 @@ Carmine wrapper for my own use.
 ## Unreleased
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
+* scan-all - now `scan0` is the equivalence
+
+
+## 0.5.0 (2026-05-30)
+
+- added (c/del key)
+- updated libraries
+
+| :file    | :name                         | :current | :latest  |
+|----------|-------------------------------|----------|----------|
+| deps.edn | io.github.clojure/tools.build | v0.10.13 | v0.10.14 |
+|          | org.clojure/clojure           | 1.12.4   | 1.12.5   |
+|          | slipset/deps-deploy           | 0.2.3    | 0.2.4    |
+| pom.xml  | org.clojure/clojure           | 1.12.4   | 1.12.5   |
 
 ## 0.4.3 (2026-05-02)
 
