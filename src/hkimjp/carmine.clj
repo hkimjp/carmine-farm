@@ -35,37 +35,31 @@
   (alter-var-root #'my-conn-spec (constantly nil))
   (alter-var-root #'my-wcar-opts (constantly nil)))
 
+;; life or death
 (defn ping []
   (t/log! {:level :debug :msg "ping"})
   (wcar* (car/ping)))
 
+;; String
 (defn set [key value]
   (t/log! {:leve :debug :msg (str "set " key " " value)})
   (wcar* (car/set key value)))
 
-(defn del [key]
-  (t/log! {:level :debug :msg (str "del " key)})
-  (wcar* (car/del key)))
-
-(defn setex [key expire value]
-  (t/log! {:level :debug :msg (str "setex " key " " expire " " value)})
-  (wcar* (car/setex key expire value)))
-
-(defn expire [key value]
-  (t/log! {:level :debug :msg (str "expire " key " " value)})
-  (wcar* (car/expire key value)))
-
-(defn incr [counter]
-  (t/log! {:level :debug :msg "counter"})
-  (wcar* (car/incr counter)))
-
-(defn ttl [key]
-  (t/log! {:level :debug :msg (str "ttl " key)})
-  (wcar* (car/ttl key)))
-
 (defn get [key]
   (t/log! {:level :debug :msg (str "get " key)})
   (wcar* (car/get key)))
+
+(defn incr [counter]
+  (t/log! {:level :debug :msg "incr"})
+  (wcar* (car/incr counter)))
+
+(defn decr [counter]
+  (t/log! {:level :debug :msg "decr"})
+  (wcar* (car/decr counter)))
+
+(defn del [key]
+  (t/log! {:level :debug :msg (str "del " key)})
+  (wcar* (car/del key)))
 
 (defn exist? [key]
   (some? (get key)))
@@ -77,20 +71,6 @@
 (defn keys [key]
   (t/log! {:level :debug :msg (str "keys " key)})
   (wcar* (car/keys key)))
-
-(defn lpush [key element]
-  (t/log! {:level :debug :msg (str "lpush " key " " element)})
-  (wcar* (car/lpush key element)))
-
-(defn lrange
-  ([key] (lrange key 0 -1))
-  ([key start stop]
-   (t/log! {:level :debug :msg (str "lrange " key " " start " " stop)})
-   (wcar* (car/lrange key start stop))))
-
-(defn llen [key]
-  (t/log! {:level :debug :msg (str "llen " key)})
-  (wcar* (car/llen key)))
 
 (defn scan
   ([cursor pattern]
@@ -108,3 +88,43 @@
       (if (zero? n)
         result
         (recur n result)))))
+
+(def scan-all scan0)
+
+;; expiration
+(defn setex [key expire value]
+  (t/log! {:level :debug :msg (str "setex " key " " expire " " value)})
+  (wcar* (car/setex key expire value)))
+
+(defn expire [key value]
+  (t/log! {:level :debug :msg (str "expire " key " " value)})
+  (wcar* (car/expire key value)))
+
+(defn ttl [key]
+  (t/log! {:level :debug :msg (str "ttl " key)})
+  (wcar* (car/ttl key)))
+
+;; Lists
+(defn lpush [key element]
+  (t/log! {:level :debug :msg (str "lpush " key " " element)})
+  (wcar* (car/lpush key element)))
+
+(defn lrange
+  ([key] (lrange key 0 -1))
+  ([key start stop]
+   (t/log! {:level :debug :msg (str "lrange " key " " start " " stop)})
+   (wcar* (car/lrange key start stop))))
+
+(defn llen [key]
+  (t/log! {:level :debug :msg (str "llen " key)})
+  (wcar* (car/llen key)))
+
+;; Sets
+(defn sadd
+  ([key element]
+   (wcar* (car/sadd key element)))
+  ([key element & elements]
+   (wcar* (apply car/sadd key (cons element elements)))))
+
+(defn smembers [key]
+  (wcar* (car/smembers key)))

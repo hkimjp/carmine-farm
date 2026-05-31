@@ -5,8 +5,13 @@ Carmine wrapper for my own use.
 ## Unreleased
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
-* scan-all - now `scan0` is the equivalence
 
+
+## 0.5.1 (2026-05-31)
+
+- refactored
+- added `sadd` and `smembers`
+- added scan-all - equivalence to `scan0`
 
 ## 0.5.0 (2026-05-30)
 
