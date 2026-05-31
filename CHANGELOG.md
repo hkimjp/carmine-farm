@@ -7,7 +7,7 @@ Carmine wrapper for my own use.
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
 
 
-## 0.5.1-SNAPSHOT
+## 0.5.1 (2026-05-31)
 
 - refactored
 - added `sadd` and `smembers`
