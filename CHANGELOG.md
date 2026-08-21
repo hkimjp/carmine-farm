@@ -6,7 +6,7 @@ Carmine wrapper for my own use.
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
 
-## 0.5.2-SNAPSHOT
+## 0.5.2 (2026-08-21)
 
 - (scan-all "pattern") (scan-all "pattern" count)
 
