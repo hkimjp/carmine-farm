@@ -6,8 +6,9 @@ Carmine wrapper for my own use.
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
 
-## 0.5.2 (2026-08-21)
+## 0.5.144 (2026-08-21)
 
+- MAJOR.MINOR.COMMIT version tag.
 - (scan-all "pattern") (scan-all "pattern" count)
 
 ## 0.5.1 (2026-05-31)
