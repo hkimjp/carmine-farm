@@ -5,11 +5,21 @@ Carmine wrapper for my own use.
 ## Unreleased
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
+* how to close connection?
 
 
 ## 0.6.0-SNAPSHOT
 
-- open/close looks not work
+- open/close looks not work - even if pool and spec are nil,
+  function call success. maybe default pool and default spec are defined.
+
+```clojure
+  (macroexpand-1 `(wcar* (car/ping)))
+  => (taoensso.carmine/wcar hkimjp.carmine/my-wcar-opts (taoensso.carmine/ping))
+
+  (taoensso.carmine/wcar {:pool nil :spec nil} (taoensso.carmine/ping))
+```
+
 - connect to docker valkey/valkey:9.1? - yes
 - updated libraries
 

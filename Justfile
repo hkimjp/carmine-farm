@@ -14,3 +14,6 @@ subl:
 
 clean:
   rm -rf target
+
+valkey-cli:
+  docker exec -it valkey valkey-cli -h localhost

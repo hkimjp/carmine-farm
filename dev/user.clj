@@ -6,8 +6,9 @@
 (tel/set-min-level! :debug)
 
 (comment
-  (c/ping)
 
+  (c/ping)
+  (c/close)
   (c/create-conn)
 
   (time (c/scan-all "track*" 10))
