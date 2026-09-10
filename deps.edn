@@ -1,10 +1,10 @@
 {:paths ["src" "resources"]
 
  :deps
- {org.clojure/clojure   {:mvn/version "1.12.5"}
+ {org.clojure/clojure   {:mvn/version "1.12.6"}
   environ/environ       {:mvn/version "1.2.0"}
   com.taoensso/carmine  {:mvn/version "3.5.0"}
-  com.taoensso/telemere {:mvn/version "1.2.1"}}
+  com.taoensso/telemere {:mvn/version "1.4.0"}}
 
  :aliases
  {:dev {:extra-paths ["dev"]
@@ -12,7 +12,7 @@
         :jvm-opts    ["--add-opens=java.base/java.nio=ALL-UNNAMED"
                       "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED"
                       "--enable-native-access=ALL-UNNAMED"]}
-  :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "1.5.2"}}
+  :nrepl {:extra-deps {nrepl/nrepl {:mvn/version "1.7.0"}}
           :main-opts  ["-m" "nrepl.cmdline"]}
 
   :test {:extra-paths ["test"]
@@ -22,7 +22,7 @@
 
   :build {:deps {io.github.clojure/tools.build
                  {:git/tag "v0.10.14" :git/sha "1176afd"}
-                 slipset/deps-deploy {:mvn/version "0.2.4"}}
+                 slipset/deps-deploy {:mvn/version "0.2.5"}}
           :ns-default build}
 
   :neil {:project {:name hkimjp/carmine-farm}}}}

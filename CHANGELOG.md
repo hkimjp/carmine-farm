@@ -5,9 +5,35 @@ Carmine wrapper for my own use.
 ## Unreleased
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
+* how to close connection?
 
-## 0.5.2 (2026-08-21)
 
+## 0.6.126 (2026-09-10)
+
+- open/close looks not work - even if pool and spec are nil,
+  function call success. maybe default pool and default spec are defined.
+
+```clojure
+  (macroexpand-1 `(wcar* (car/ping)))
+  => (taoensso.carmine/wcar hkimjp.carmine/my-wcar-opts (taoensso.carmine/ping))
+
+  (taoensso.carmine/wcar {:pool nil :spec nil} (taoensso.carmine/ping))
+```
+
+- connect to docker valkey/valkey:9.1? - yes
+- updated libraries
+
+| :file    | :name                 | :current | :latest |
+|----------|-----------------------|----------|---------|
+| deps.edn | com.taoensso/telemere | 1.2.1    | 1.4.0   |
+|          | nrepl/nrepl           | 1.5.2    | 1.7.0   |
+|          | org.clojure/clojure   | 1.12.5   | 1.12.6  |
+|          | slipset/deps-deploy   | 0.2.4    | 0.2.5   |
+| pom.xml  | org.clojure/clojure   | 1.12.5   | 1.12.6  |
+
+## 0.5.144 (2026-08-21)
+
+- MAJOR.MINOR.COMMIT version tag.
 - (scan-all "pattern") (scan-all "pattern" count)
 
 ## 0.5.1 (2026-05-31)
