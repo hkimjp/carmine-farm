@@ -6,6 +6,7 @@ Carmine wrapper for my own use.
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
 
+
 ## 0.6.0-SNAPSHOT
 
 - open/close looks not work
@@ -19,6 +20,11 @@ Carmine wrapper for my own use.
 |          | org.clojure/clojure   | 1.12.5   | 1.12.6  |
 |          | slipset/deps-deploy   | 0.2.4    | 0.2.5   |
 | pom.xml  | org.clojure/clojure   | 1.12.5   | 1.12.6  |
+
+## 0.5.144 (2026-08-21)
+
+- MAJOR.MINOR.COMMIT version tag.
+- (scan-all "pattern") (scan-all "pattern" count)
 
 ## 0.5.1 (2026-05-31)
 

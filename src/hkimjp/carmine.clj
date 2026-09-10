@@ -78,16 +78,17 @@
   ([cursor pattern count]
    (wcar* (car/scan cursor "MATCH" pattern "COUNT" count))))
 
-; remains for backward compatibility
-; rename to `scan-all`?
-(defn scan0 [pattern]
-  (loop [cursor 0 result []]
-    (let [[c r] (scan cursor pattern)
-          n (parse-long c)
-          result (concat result r)]
-      (if (zero? n)
-        result
-        (recur n result)))))
+; the function name `scan0` is for backward compatibility.
+(defn scan0
+  ([pattern] (scan0 pattern 100))
+  ([pattern count]
+   (loop [cursor 0 result []]
+     (let [[c r] (scan cursor pattern count)
+           n (parse-long c)
+           result (concat result r)]
+       (if (zero? n)
+         result
+         (recur n result))))))
 
 (def scan-all scan0)
 
