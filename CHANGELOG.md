@@ -5,6 +5,8 @@ Carmine wrapper for my own use.
 ## Unreleased
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
+* why starts auto?
+* how to close connection?
 
 
 ## 0.6.0-SNAPSHOT
