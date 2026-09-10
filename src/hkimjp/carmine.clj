@@ -11,6 +11,11 @@
 (def my-conn-spec {:uri (or (env :redis) "redis://localhost:6379")})
 (def my-wcar-opts {:pool my-conn-pool :spec my-conn-spec})
 
+(comment
+  (macroexpand-1 `(wcar* (car/ping)))
+  (taoensso.carmine/wcar {:pool nil :spec nil} (taoensso.carmine/ping))
+  :rcf)
+
 ;; no use. backward compatibility
 (defn create-conn
   ([] (create-conn (or (env :redis) "redis://localhost:6379")))
@@ -28,13 +33,7 @@
          (throw (Exception. msg))
          (System/exit 0))))))
 
-; (def conn (create-conn))
-; (car/close-conn conn)
-
-; (def redis-server create-conn)
-
-; backward compatibility
-; FIXME: properly closed by this?
+; no use. backward compatibility
 (defn close-conn []
   (t/log! {:level :debug :id "close-conn"})
   (alter-var-root #'my-conn-pool (constantly nil))
