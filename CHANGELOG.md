@@ -8,7 +8,7 @@ Carmine wrapper for my own use.
 * how to close connection?
 
 
-## 0.6.0-SNAPSHOT
+## 0.6.126 (2026-09-10)
 
 - open/close looks not work - even if pool and spec are nil,
   function call success. maybe default pool and default spec are defined.
