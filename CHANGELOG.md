@@ -6,6 +6,19 @@ Carmine wrapper for my own use.
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
 
+## 0.6.0-SNAPSHOT
+
+- open/close looks not work
+- connect to docker valkey/valkey:9.1? - yes
+- updated libraries
+
+| :file    | :name                 | :current | :latest |
+|----------|-----------------------|----------|---------|
+| deps.edn | com.taoensso/telemere | 1.2.1    | 1.4.0   |
+|          | nrepl/nrepl           | 1.5.2    | 1.7.0   |
+|          | org.clojure/clojure   | 1.12.5   | 1.12.6  |
+|          | slipset/deps-deploy   | 0.2.4    | 0.2.5   |
+| pom.xml  | org.clojure/clojure   | 1.12.5   | 1.12.6  |
 
 ## 0.5.1 (2026-05-31)
 

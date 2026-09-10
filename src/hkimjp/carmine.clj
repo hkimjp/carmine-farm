@@ -35,7 +35,7 @@
   (alter-var-root #'my-conn-spec (constantly nil))
   (alter-var-root #'my-wcar-opts (constantly nil)))
 
-;; life or death
+;; live or death
 (defn ping []
   (t/log! {:level :debug :msg "ping"})
   (wcar* (car/ping)))

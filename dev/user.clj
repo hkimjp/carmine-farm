@@ -6,6 +6,7 @@
 (tel/set-min-level! :debug)
 
 (comment
+  (c/ping)
   (c/sadd "mem1" "1")
   (c/smembers "mem1")
 
@@ -25,4 +26,5 @@
   (c/get "a")
 
   (c/close-conn)
+  (c/ping)
   :rcf)

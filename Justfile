@@ -8,5 +8,9 @@ nrepl:
 
 dev: nrepl
 
+subl:
+  subl .
+  just dev
+
 clean:
   rm -rf target
