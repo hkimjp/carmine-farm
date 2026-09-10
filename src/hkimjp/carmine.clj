@@ -11,6 +11,7 @@
 (def my-conn-spec {:uri (or (env :redis) "redis://localhost:6379")})
 (def my-wcar-opts {:pool my-conn-pool :spec my-conn-spec})
 
+;; no use. backward compatibility
 (defn create-conn
   ([] (create-conn (or (env :redis) "redis://localhost:6379")))
   ([uri]
@@ -32,6 +33,7 @@
 
 ; (def redis-server create-conn)
 
+; backward compatibility
 ; FIXME: properly closed by this?
 (defn close-conn []
   (t/log! {:level :debug :id "close-conn"})
@@ -39,7 +41,7 @@
   (alter-var-root #'my-conn-spec (constantly nil))
   (alter-var-root #'my-wcar-opts (constantly nil)))
 
-;; live or death
+;; live or dead
 (defn ping []
   (t/log! {:level :debug :msg "ping"})
   (wcar* (car/ping)))
