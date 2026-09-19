@@ -6,8 +6,21 @@ Carmine wrapper for my own use.
 
 * (scan-keys conn-opt pattern) - what is the `conn-opt`?
 
-## 0.5.2 (2026-08-21)
+## 0.5.121 (2026-09-19)
 
+- updated dependencies
+
+| :file    | :name                 | :current | :latest |
+|----------|-----------------------|----------|---------|
+| deps.edn | com.taoensso/telemere | 1.2.1    | 1.4.0   |
+|          | nrepl/nrepl           | 1.5.2    | 1.7.0   |
+|          | org.clojure/clojure   | 1.12.5   | 1.12.6  |
+|          | slipset/deps-deploy   | 0.2.4    | 0.2.5   |
+| pom.xml  | org.clojure/clojure   | 1.12.5   | 1.12.6  |
+
+## 0.5.144 (2026-08-21)
+
+- MAJOR.MINOR.COMMIT version tag.
 - (scan-all "pattern") (scan-all "pattern" count)
 
 ## 0.5.1 (2026-05-31)
