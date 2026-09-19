@@ -2,18 +2,25 @@
   (:refer-clojure :exclude [set get keys])
   (:require
    [environ.core :refer [env]]
-   [taoensso.carmine :as car]
+   [taoensso.carmine :as car :refer [wcar]]
    [taoensso.telemere :as t]))
 
-(defmacro wcar* [& body] `(car/wcar my-wcar-opts ~@body))
-(def my-conn-pool nil)
-(def my-conn-spec nil)
-(def my-wcar-opts nil)
+(defmacro wcar* [& body] `(wcar my-wcar-opts ~@body))
 
+(defonce my-conn-pool (car/connection-pool {}))
+(def my-conn-spec {:uri (or (env :redis) "redis://localhost:6379")})
+(def my-wcar-opts {:pool my-conn-pool :spec my-conn-spec})
+
+(comment
+  (macroexpand-1 `(wcar* (car/ping)))
+  (taoensso.carmine/wcar {:pool nil :spec nil} (taoensso.carmine/ping))
+  :rcf)
+
+;; no use. backward compatibility
 (defn create-conn
   ([] (create-conn (or (env :redis) "redis://localhost:6379")))
   ([uri]
-   (t/log! {:level :info :id "create-conn" :msg uri})
+   (t/log! {:level :debug :id "create-conn" :msg uri})
    (try
      (alter-var-root #'my-conn-pool (constantly (car/connection-pool {})))
      (alter-var-root #'my-conn-spec (constantly {:uri uri}))
@@ -26,16 +33,14 @@
          (throw (Exception. msg))
          (System/exit 0))))))
 
-(def redis-server create-conn)
-
-; FIXME: properly closed by this?
+; no use. backward compatibility
 (defn close-conn []
-  (t/log! {:level :info :id "close-conn"})
+  (t/log! {:level :debug :id "close-conn"})
   (alter-var-root #'my-conn-pool (constantly nil))
   (alter-var-root #'my-conn-spec (constantly nil))
   (alter-var-root #'my-wcar-opts (constantly nil)))
 
-;; life or death
+;; live or dead
 (defn ping []
   (t/log! {:level :debug :msg "ping"})
   (wcar* (car/ping)))
@@ -74,14 +79,18 @@
 
 (defn scan
   ([cursor pattern]
+   (t/log! {:level :debug :id "scan"
+            :data {:cursor cursor :pattern pattern}})
    (wcar* (car/scan cursor "MATCH" pattern)))
   ([cursor pattern count]
+   (t/log! {:level :debug :id "scan" :data {:cursor cursor :pattern pattern :count count}})
    (wcar* (car/scan cursor "MATCH" pattern "COUNT" count))))
 
 ; the function name `scan0` is for backward compatibility.
 (defn scan0
   ([pattern] (scan0 pattern 100))
   ([pattern count]
+   (t/log! {:level :debug :id "scan0" :data {:pattern pattern :count count}})
    (loop [cursor 0 result []]
      (let [[c r] (scan cursor pattern count)
            n (parse-long c)
@@ -123,9 +132,12 @@
 ;; Sets
 (defn sadd
   ([key element]
+   (t/log! {:level :debug :id "sadd" :data {:key key :element element}})
    (wcar* (car/sadd key element)))
   ([key element & elements]
+   (t/log! {:level :debug :id "sadd" :data {:key key :element element}})
    (wcar* (apply car/sadd key (cons element elements)))))
 
 (defn smembers [key]
+  (t/log! {:level :debug :id "smembers" :data {:key key}})
   (wcar* (car/smembers key)))
