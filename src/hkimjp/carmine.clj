@@ -54,10 +54,12 @@
   (t/log! {:level :debug :msg (str "get " key)})
   (wcar* (car/get key)))
 
+#_{:clojure-lsp/ignore [:clojure-lsp/unused-public-var]}
 (defn incr [counter]
   (t/log! {:level :debug :msg "incr"})
   (wcar* (car/incr counter)))
 
+#_{:clojure-lsp/ignore [:clojure-lsp/unused-public-var]}
 (defn decr [counter]
   (t/log! {:level :debug :msg "decr"})
   (wcar* (car/decr counter)))
@@ -66,9 +68,11 @@
   (t/log! {:level :debug :msg (str "del " key)})
   (wcar* (car/del key)))
 
+#_{:clojure-lsp/ignore [:clojure-lsp/unused-public-var]}
 (defn exist? [key]
   (some? (get key)))
 
+#_{:clojure-lsp/ignore [:clojure-lsp/unused-public-var]}
 (defn exists [key]
   (t/log! {:level :debug :msg (str "exists " key)})
   (wcar* (car/exists key)))
@@ -102,29 +106,35 @@
 (def scan-all scan0)
 
 ;; expiration
+#_{:clojure-lsp/ignore [:clojure-lsp/unused-public-var]}
 (defn setex [key expire value]
   (t/log! {:level :debug :msg (str "setex " key " " expire " " value)})
   (wcar* (car/setex key expire value)))
 
+#_{:clojure-lsp/ignore [:clojure-lsp/unused-public-var]}
 (defn expire [key value]
   (t/log! {:level :debug :msg (str "expire " key " " value)})
   (wcar* (car/expire key value)))
 
+#_{:clojure-lsp/ignore [:clojure-lsp/unused-public-var]}
 (defn ttl [key]
   (t/log! {:level :debug :msg (str "ttl " key)})
   (wcar* (car/ttl key)))
 
 ;; Lists
+#_{:clojure-lsp/ignore [:clojure-lsp/unused-public-var]}
 (defn lpush [key element]
   (t/log! {:level :debug :msg (str "lpush " key " " element)})
   (wcar* (car/lpush key element)))
 
+#_{:clojure-lsp/ignore [:clojure-lsp/unused-public-var]}
 (defn lrange
   ([key] (lrange key 0 -1))
   ([key start stop]
    (t/log! {:level :debug :msg (str "lrange " key " " start " " stop)})
    (wcar* (car/lrange key start stop))))
 
+#_{:clojure-lsp/ignore [:clojure-lsp/unused-public-var]}
 (defn llen [key]
   (t/log! {:level :debug :msg (str "llen " key)})
   (wcar* (car/llen key)))
